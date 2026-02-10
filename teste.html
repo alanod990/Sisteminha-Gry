@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tarefas Simples</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        input { padding: 8px; font-size: 16px; }
+        button { padding: 8px 16px; font-size: 16px; cursor: pointer; }
+        ul { list-style-type: none; padding: 0; }
+        li { 
+            background: #f0f0f0; 
+            margin: 5px 0; 
+            padding: 10px; 
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+        li button {
+            background: #ff4444;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Minha Lista Dinâmica</h2>
+
+    <input type="text" id="entradaItem" placeholder="Digite algo...">
+    
+    <button id="btnAdicionar">Adicionar</button>
+
+    <ul id="listaItens"></ul>
+
+    <script>
+        // --- LÓGICA JAVASCRIPT ---
+
+        // A. Selecionamos os elementos da tela
+        const input = document.getElementById('entradaItem');
+        const botao = document.getElementById('btnAdicionar');
+        const lista = document.getElementById('listaItens');
+
+        // B. Função que faz a mágica acontecer
+        function adicionarItem() {
+            const texto = input.value; // Pega o que foi escrito
+
+            // Validação: Se estiver vazio, não faz nada
+            if (texto === '') {
+                alert("Por favor, escreva algo!");
+                return;
+            }
+
+            // 1. Cria o elemento <li> (mas ainda não está na tela)
+            const novoItem = document.createElement('li');
+            novoItem.textContent = texto;
+
+            // (Opcional) Botão de remover para cada item
+            const btnRemover = document.createElement('button');
+            btnRemover.textContent = "X";
+            btnRemover.onclick = function() {
+                lista.removeChild(novoItem);
+            };
+
+            // 2. Monta o item (coloca o botão dentro do li)
+            novoItem.appendChild(btnRemover);
+
+            // 3. Coloca o <li> dentro da <ul> (agora aparece na tela)
+            lista.appendChild(novoItem);
+
+            // 4. Limpa o campo de texto e foca nele novamente
+            input.value = '';
+            input.focus();
+        }
+
+        // C. "Ouvinte de Evento": Fica esperando o clique
+        botao.addEventListener('click', adicionarItem);
+
+        // D. Extra: Permitir apertar "Enter" para adicionar também
+        input.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                adicionarItem();
+            }
+        });
+    </script>
+
+</body>
+</html>
