@@ -7,21 +7,58 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/reset.css" rel="stylesheet">
         <style>
+            body {
+                background-color: rgb(167, 109, 86);
+            }
+            .coluna {
+                margin: auto;
+                background-color: brown;
+                height: 100vh;
+                max-width: 95%;
+                width: 500px;
+                border: 1px solid black;
+            }
+            .titulo {
+                text-align: center;
+                font-size: 30pt;
+            }
+            .separador {
+                margin: auto;
+                border-bottom: 1px solid black;
+                width: 80%;
+            }
+            .conteudo {
+                margin: auto;
+                margin-top: 10px;
+                border: 1px solid black;
+                border-radius: 4px;
+                width: 80%;
+                min-height: 100px;
+            }
 
         </style>
     </head>
     <body>
-        <label for="lista">lista</label>
-    <input type="text" name="lista" id="lista">
-    <button onclick="addlista()">+</button>
-    <table>
-        <thead>
-        <tr><th>Tabela</th></tr>
-        </thead>
-        <tbody id="conteudo">
-            <tr><td>Aqui um item</td></tr>
-        </tbody>
-    </table>
+        <div class="coluna">
+            <header class="titulo">GRY</header>
+            <div class="separador"></div>
+            <div class="conteudo">
+                <form>
+                    <label for="pescola"></label>
+                    <input type="text" id="pescola" name="pescola" value="Escola">
+
+                    <label for="pnome"></label>
+                    <input type="text" id="pnome" name="pnome" value="Peça">
+
+                    <label for="pgen"></label>
+                    <input type="text" id="pgen" name="pgen" value="Genero">
+
+                    <label for="ptam"></label>
+                    <input type="text" id="ptam" name="ptam" value="Tam">
+                </form>
+            </div>
+        </div>
+        
         <script>
 
         </script>
